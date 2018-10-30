@@ -35,8 +35,9 @@ public class Ejercicio1 {
             try {
                 estado = JOptionPane.showInputDialog("Introduce el estado civil").charAt(0);
                 estudios = JOptionPane.showInputDialog("Introduce los estudios").charAt(0);
+                
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                JOptionPane.showMessageDialog(null, e.getMessage() + e.getClass());
             }
 
             horasPagadas();
@@ -57,7 +58,7 @@ public class Ejercicio1 {
             sueldo = horas * 10;
         } else {
             horasExtra = (horas - 40) * 15;
-            horasNormales = horas * 10;
+            horasNormales = 40 * 10;
             sueldo = horasNormales + horasExtra;
         }
         return sueldo;
