@@ -18,6 +18,9 @@ public class Ejercicio5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        //QUERIA HACER DE UNA FORMA SIMILAR LA CAJA DE CAMBIOS PERO NO SE EN QUE ME LIE, LO HE CAMBIADO MIL VECES
+        //AÑADIENDO Y QUITANDO COSAS Y AL FINAL ME LIE Y NO HE SIDO CAPAZ DE SOLUCIONARLO
 
         double cambio[] = {200, 100, 50, 20, 10, 5, 2, 1, 0.50, 0.20, 0.10, 0.05, 0.02, 0.01};
         double pago = 0;
