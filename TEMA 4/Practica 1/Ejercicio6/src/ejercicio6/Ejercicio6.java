@@ -16,82 +16,65 @@ public class Ejercicio6 {
 
     /**
      * Se trata de hacer un "calendario" con las faltas de los alumnos
-     * 
+     *
      * @param args the command line arguments
-     * 
+     *
      */
+    private static int dias[] = new int[5];
+    private static int alumnos[] = new int[5];
+
     public static void main(String[] args) {
-        // TODO code application logic here
-
         
-        int[] diaArray = new int[5];
-        int[] codigoArray = new int[5];
-        int[] faltaArray = new int[5];
-
-        cogerDatos(diaArray, codigoArray, faltaArray);
-
-        String valor = datosSalida(diaArray, codigoArray, faltaArray);
-
-        JOptionPane.showMessageDialog(null, valor);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param diaArray El dia en el que el alumnado ha faltado
-     * @param codigoArray El codigo del alumnado
-     * @param faltasArray Faltas totales del alumno
-     * 
-     * @throws FormatException para cuando falla la conversion de numeros
-     * @throws Exception Generica
-     */
-    public static void cogerDatos(int[] diaArray, int[] codigoArray, int[] faltasArray) {
-
-        String codigo;
-        int dia, faltas, continuar;
-
+        int continuar = 0;
         do {
             try {
-                for (int x = 0; x < diaArray.length; x++) {
-                    codigo = JOptionPane.showInputDialog(null, "Introduce un codigo de alumno");
-                    dia = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce un día"));
-                    faltas = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce un número de faltas"));
-
-                    if (!Arrays.toString(codigoArray).contains(codigo)) {
-                        codigoArray[x] = Integer.parseInt(codigo);
-                        diaArray[x] = dia;
-                        faltasArray[x] = faltas;
-                    }
-                }
-
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Error en la combersion de numeros" + e.getMessage());
+                llenarArrays();
+                entradaDatos();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
             }
-
-            continuar = JOptionPane.showConfirmDialog(null, "Quieres introducir más datos?");
+            continuar = JOptionPane.showConfirmDialog(null,"Quieres continuar");
         } while (continuar == 0);
 
     }
 
-    /**
-     * Almacenamos los datos que vamos a mostrar por pantalla cuando el
-     * usuario quiera finalizar
-     * 
-     * @param diaArray El dia en el que el alumnado ha faltado
-     * @param codigoArray El codigo del alumnado
-     * @param faltasArray Faltas totales del alumno
-     * @return valor 
-     * 
-     */
-    public static String datosSalida(int[] diaArray, int[] codigoArray, int[] faltasArray) {
-        String valor = "";
-        for (int x = 0; x < codigoArray.length; x++) {
-            valor += "Alumno: " + codigoArray[x] + "  Dia: " + diaArray[x] + "  Faltas: " + faltasArray[x] + "\n";
-        }
-        return valor;
+    public static void llenarArrays() throws Exception {
+        Arrays.fill(dias, 0);
+        Arrays.fill(alumnos, 0);
     }
 
+    public static void entradaDatos() throws Exception {
+        boolean ok;
+        String cadena = "";
+        int x = 0;
+        do {
+            int faltas = 0;
+            ok = false;
+            while (ok == false) {
+                try {
+                    alumnos[x] = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el codigo del alumno numero: " + (x + 1)));
+                    ok = true;
+                } catch (NumberFormatException e1) {
+                    JOptionPane.showMessageDialog(null, "Introduce el codigo en un formato correcto");
+                }
+            }
+            for (int y = 0; y < dias.length; y++) {
+                ok = false;
+                while (ok == false) {
+                    try {
+                        dias[y] = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el numero de faltas del alumno " + (x + 1) + " el dia: " + (y + 1)));
+                        ok = true;
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Introduce el numero de faltas en un formato correcto");
+                    }
+                }
+                faltas += dias[y];
+            }
+            if (faltas != 0) {
+                cadena += "El alumno con el codigo " + alumnos[x] + " tiene " + faltas + " faltas" + "\n";
+                x++;
+            }
+        } while (x < alumnos.length);
+        JOptionPane.showMessageDialog(null, cadena);
+    }
 }
