@@ -24,7 +24,7 @@ public class Ejercicio6 {
     private static int alumnos[] = new int[5];
 
     public static void main(String[] args) {
-        
+
         int continuar = 0;
         do {
             try {
@@ -33,7 +33,7 @@ public class Ejercicio6 {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
             }
-            continuar = JOptionPane.showConfirmDialog(null,"Quieres continuar");
+            continuar = JOptionPane.showConfirmDialog(null, "Quieres continuar");
         } while (continuar == 0);
 
     }

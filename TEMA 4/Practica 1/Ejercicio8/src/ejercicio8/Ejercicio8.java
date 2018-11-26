@@ -44,6 +44,8 @@ public class Ejercicio8 {
                 fila = Integer.parseInt(JOptionPane.showInputDialog(null, "fila"));
                 columna = Integer.parseInt(JOptionPane.showInputDialog(null, "columna"));
                 valores = Integer.parseInt(JOptionPane.showInputDialog(null, "valor"));
+                
+                matriz[fila - 1][columna - 1] = valores;
 
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Error en la combersion de numeros" + e.getMessage());
@@ -51,7 +53,7 @@ public class Ejercicio8 {
                 JOptionPane.showMessageDialog(null, "Error " + e.getMessage());
             }
 
-            matriz[fila - 1][columna - 1] = valores;
+            
 
             continuar = JOptionPane.showConfirmDialog(null, "Quieres introducir más datos?");
         } while (continuar == 0);

@@ -30,7 +30,9 @@ public class Ejercicio9 {
         en la que tenemos los titulos de la tabla, validar que sean correctos los idiomas y 
         los niveles y encajar en la posicion correcta el valor que coincida entre esos dos datos
          */
-        String tablaCompleta[][] = {{"ingles", "frances", "aleman", "ruso"}, {"basico", "medio", "perfeccionamiento"}};
+        // tablaCompleta[][] = {{"ingles", "frances", "aleman", "ruso"}, {"basico", "medio", "perfeccionamiento"}};
+        //String [] idioma ={"ingles", "frances", "aleman", "ruso"};
+        //String [] nivel ={"basico", "medio", "perfeccionamiento"};
         int[][] tabla = new int[4][3];
         int continuar = 0, nivel, idioma, alumnos;
 
@@ -54,9 +56,9 @@ public class Ejercicio9 {
          */
         
         do{
-            idioma = Integer.parseInt(JOptionPane.showInputDialog("Introduce el nivel"));
+            idioma = Integer.parseInt(JOptionPane.showInputDialog("Introduce el idioma"));
             nivel = Integer.parseInt(JOptionPane.showInputDialog("Introduce el nivel"));
-            alumnos = Integer.parseInt(JOptionPane.showInputDialog("Introduce el nivel"));
+            alumnos = Integer.parseInt(JOptionPane.showInputDialog("Introduce el numero de alumnos"));
             
             tabla[idioma][nivel] = alumnos;  
             
