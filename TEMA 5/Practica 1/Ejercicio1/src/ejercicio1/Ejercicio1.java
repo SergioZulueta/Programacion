@@ -18,6 +18,7 @@ package ejercicio1;
 
 import Excepciones.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JOptionPane;
 
 /**
@@ -126,27 +127,42 @@ public class Ejercicio1 {
 
     }
 
-    public static void maximoYMinimo() {
+    public static double solicitarNumero() {
+        double numero = 0;
 
-        double min = 999999999, max = 0;
-
-        for (int x = 0; x > numeros.size(); x++) {
-            if (min > numeros.get(x)) {
-                min = numeros.get(x);
-            }
-            if (max < numeros.get(x)) {
-                max = numeros.get(x);
-            }
+        try {
+            numero = Double.parseDouble(JOptionPane.showInputDialog(null, "Introdice un numero"));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Introduce el importe en un formato correcto");
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Este campo no puede estar vacio");
         }
 
-        JOptionPane.showMessageDialog(null, "Los numeros son: " + numeros
-                + "\nEl numero minimo es: " + min
-                + "\nEl numero maximo es: " + max);
+        return numero;
+    }
 
+    public static void maximoYMinimo() {
+        int minimo = numeros.size();
+        Collections.sort(numeros);
+        JOptionPane.showMessageDialog(null, "El numero introducido mas bajo es el: " + numeros.get(0) + "\n" + " y el mas alto es: " + numeros.get(minimo - 1));
     }
 
     public static void encontrarNumero() {
+        double numero = solicitarNumero();
 
+        if (numeros.contains(numero)) {
+            JOptionPane.showMessageDialog(null, "Si que contiene el numero: " + numero);
+        } else {
+            JOptionPane.showMessageDialog(null, "No contiene el numero: " + numero);
+        }
+
+        /*String cadena = "El numero especificado existe en la lista";
+        int x = 0;
+        do {
+            x++;
+        } while (numeros.contains(numero) == true && x < numeros.size());
+        JOptionPane.showMessageDialog(null, cadena + " Y aparece: " + x + " veces.");
+         */
     }
 
     public static void borrarNumero() {
