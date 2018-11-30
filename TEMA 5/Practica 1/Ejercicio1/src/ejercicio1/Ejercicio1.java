@@ -18,6 +18,7 @@ package ejercicio1;
 
 import Excepciones.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import javax.swing.JOptionPane;
 
@@ -60,7 +61,7 @@ public class Ejercicio1 {
 
     }
 
-    public static void Menu() {
+    public static int Menu() {
         int opcion = 0;
 
         do {
@@ -89,53 +90,71 @@ public class Ejercicio1 {
                 JOptionPane.showMessageDialog(null, " Error" + e.getMessage());
             }
 
-            switch (opcion) {
-
-                case 1:
-                    maximoYMinimo();
-                    break;
-                case 2:
-                    encontrarNumero();
-                    break;
-                case 3:
-                    borrarNumero();
-                    break;
-                case 4:
-                    convertirArray();
-                    break;
-                case 5:
-                    mostrarNumeros();
-                    break;
-                case 6:
-                    insertarNumeroFinal();
-                    break;
-                case 7:
-                    insertarNumeroAGusto();
-                    break;
-                case 8:
-                    borrarNumeroPosCon();
-                    break;
-                case 9:
-                    calcularSumYMedia();
-                    break;
-                case 10:
-                    Finalizar();
-                    break;
-            }
+            elSwitch(opcion);
 
         } while (opcion != 10);
 
+        return opcion;
+    }
+
+    public static void elSwitch(int opcion) {
+
+        switch (opcion) {
+
+            case 1:
+                maximoYMinimo();
+                break;
+            case 2:
+                encontrarNumero();
+                break;
+            case 3:
+                borrarNumero();
+                break;
+            case 4:
+                convertirArray();
+                break;
+            case 5:
+                mostrarNumeros();
+                break;
+            case 6:
+                insertarNumeroFinal();
+                break;
+            case 7:
+                insertarNumeroAGusto();
+                break;
+            case 8:
+                borrarNumeroPosCon();
+                break;
+            case 9:
+                calcularSumYMedia();
+                break;
+            case 10:
+                Finalizar();
+                break;
+        }
+    }
+
+    public static String mostrarDatos() {
+        String datos = "";
+
+        datos = numeros.stream().map((elemento) -> elemento + "").reduce(datos, String::concat);
+
+        return datos;
     }
 
     public static double solicitarNumero() {
         double numero = 0;
 
         try {
+
             numero = Double.parseDouble(JOptionPane.showInputDialog(null, "Introdice un numero"));
+
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Introduce el importe en un formato correcto");
+            JOptionPane.showMessageDialog(null, "Introduce el importe en un formato correcto" + e.getMessage());
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Este campo no puede estar vacio");
+            JOptionPane.showMessageDialog(null, "Este campo no puede estar vacio" + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error " + e.getMessage());
         }
 
         return numero;
@@ -144,7 +163,9 @@ public class Ejercicio1 {
     public static void maximoYMinimo() {
         int minimo = numeros.size();
         Collections.sort(numeros);
-        JOptionPane.showMessageDialog(null, "El numero introducido mas bajo es el: " + numeros.get(0) + "\n" + " y el mas alto es: " + numeros.get(minimo - 1));
+        JOptionPane.showMessageDialog(null, mostrarDatos()
+                + "\n" + "El numero introducido mas bajo es el: " + numeros.get(0)
+                + "\n" + "El mas alto es: " + numeros.get(minimo - 1));
     }
 
     public static void encontrarNumero() {
@@ -170,6 +191,10 @@ public class Ejercicio1 {
     }
 
     public static void convertirArray() {
+        Object[] conversion = numeros.toArray();
+
+        JOptionPane.showMessageDialog(null, conversion);
+        JOptionPane.showMessageDialog(null,"ArrayList: " + mostrarDatos() + "\n" + "Array: " + Arrays.toString(conversion));
 
     }
 
