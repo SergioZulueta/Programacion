@@ -5,6 +5,8 @@
  */
 package ejercicio2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author hp_pc
@@ -14,8 +16,12 @@ public class Ejercicio2 {
     /**
      * @param args the command line arguments
      */
+    private static ArrayList<ArrayList<String>> alumnos;
+    private static ArrayList<ArrayList<Integer>> niveles;
+    private static ArrayList<String> idioma;
+
     public static void main(String[] args) {
-        // TODO code application logic here
+
     }
-    
+
 }
