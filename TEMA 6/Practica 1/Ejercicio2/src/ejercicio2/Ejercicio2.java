@@ -18,31 +18,37 @@ public class Ejercicio2 {
     /**
      * @param args the command line arguments
      */
+    static Alumno alumno;
+
     public static void main(String[] args) {
         // TODO code application logic here
         int codigo;
-        ArrayList <Alumno> agenda = new ArrayList();
-        Alumno alumno = new Alumno(); 
-        
-        
-        do{            
-            
+        ArrayList<Alumno> agenda = new ArrayList();
+
+        do {
+
+            alumno = new Alumno();
             alumno.setCodigo(Integer.parseInt(JOptionPane.showInputDialog("Introduce el Codigo")));
             alumno.setNombre(JOptionPane.showInputDialog("Introduce el Nombre"));
             alumno.setDomicilio(JOptionPane.showInputDialog("Introduce el Domicilio"));
             alumno.setTelefono(Integer.parseInt(JOptionPane.showInputDialog("Introduce el Telelefono")));
-            
+
             agenda.add(alumno);
-            
-        }while(JOptionPane.showConfirmDialog(null, "Queres contiare")==0);
-        
+
+        } while (JOptionPane.showConfirmDialog(null, "Queres contiar") == 0);
+
         codigo = Integer.parseInt(JOptionPane.showInputDialog("Introduce el Codigo"));
-        if(alumno.getCodigo() == codigo){
-            JOptionPane.showMessageDialog(null, alumno.setNombre(nombre));
+
+        int x;
+        for (x = 0; x < agenda.size() && agenda.get(x).getCodigo() != codigo; x++) {
+
         }
-        
-        
-        
+
+        if (agenda.get(x).getCodigo() == codigo) {
+            JOptionPane.showMessageDialog(null, "Este es el alumno:\n " + "Codigo: " + agenda.get(x).getCodigo() + "\n"
+                    + "Nombre: " + agenda.get(x).getNombre() + "\n"
+                    + "Domicilio: " + agenda.get(x).getDomicilio() + "\n"
+                    + "Telefono: " + agenda.get(x).getTelefono());
+        }
     }
-    
 }
