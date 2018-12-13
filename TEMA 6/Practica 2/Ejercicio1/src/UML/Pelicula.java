@@ -6,8 +6,6 @@
 package UML;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -15,91 +13,78 @@ import java.util.List;
  */
 public class Pelicula {
 
-    private String nombre;
-    private String ciudad;
-    private String direccion;
-    private String dirWeb;
-    private Date fechaFundacion;
-    private String pais;
-    private List telefono;
-    private ArrayList <Estudio> estudios;
+    private String titulo;
+    private int año = 0000;
+    private int duracion;
+    private String tipo;
+    private Estudio pelicula;
 
     public Pelicula() {
     }
 
-    public Pelicula(String nombre, String ciudad, String direccion, String dirWeb, Date fechaFundacion, String pais, List telefono, Estudio estudio) {
-        this.nombre = nombre;
-        this.ciudad = ciudad;
-        this.direccion = direccion;
-        this.dirWeb = dirWeb;
-        this.fechaFundacion = fechaFundacion;
-        this.pais = pais;
-        this.telefono = telefono;
-        this.estudios = estudios;
+    public Pelicula(String titulo, int año, int duracion, String tipo, Estudio pelicula) {
+        this.titulo = titulo;
+        this.año = año;
+        this.duracion = duracion;
+        this.tipo = tipo;
+        this.pelicula = pelicula;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Pelicula(String el_retorno_del_rey, int i, int i0, String accion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void PeliculaMasLarga(){
+        for (int x = 0; x > duracion; x ++){
+            
+        }
+        
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+
+    public String getTitulo() {
+        return titulo;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public int getAño() {
+        return año;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public void setAño(char año) {
+        this.año = año;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public float getDuracion() {
+        return duracion;
     }
 
-    public String getDirWeb() {
-        return dirWeb;
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
     }
 
-    public void setDirWeb(String dirWeb) {
-        this.dirWeb = dirWeb;
+    public String getTipo() {
+        return tipo;
     }
 
-    public Date getFechaFundacion() {
-        return fechaFundacion;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public void setFechaFundacion(Date fechaFundacion) {
-        this.fechaFundacion = fechaFundacion;
+    public Estudio getPelicula() {
+        return pelicula;
     }
 
-    public String getPais() {
-        return pais;
+    public void setPelicula(Estudio pelicula) {
+        this.pelicula = pelicula;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public List getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(List telefono) {
-        this.telefono = telefono;
-    }
-
-    public ArrayList<Estudio> getEstudios() {
-        return estudios;
-    }
-
-    public void setEstudios(ArrayList<Estudio> estudios) {
-        this.estudios = estudios;
+    public void añadirPelicula(Estudio e) {
+       
     }
 
 }

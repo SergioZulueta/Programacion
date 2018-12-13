@@ -5,6 +5,8 @@
  */
 package ejercicio1;
 
+import UML.*;
+
 /**
  *
  * @author hp_pc
@@ -15,7 +17,12 @@ public class Ejercicio1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Pelicula p = new Pelicula("El retorno del rey", 2003 , 201, "Accion");
+        
+        Estudio e = new Estudio();
+        
+        p.añadirPelicula(e);
+        p.añadirPelicula(e);
         
     }
     
