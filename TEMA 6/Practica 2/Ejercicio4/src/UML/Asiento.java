@@ -10,15 +10,27 @@ package UML;
  * @author steel
  */
 public class Asiento {
+
     private int numeroAsiento;
     private boolean estado;
     private String compartimiento;
     private Pasajero p;
+    private Vuelo vuelo;
 
-    public Asiento(int numeroAsiento, boolean estado, String compartimiento) {
+    public Asiento(int numeroAsiento, boolean estado, String compartimiento, Pasajero p, Vuelo vuelo) {
         this.numeroAsiento = numeroAsiento;
         this.estado = estado;
         this.compartimiento = compartimiento;
+        this.p = p;
+        this.vuelo = vuelo;
+    }
+
+    public Vuelo getVuelo() {
+        return vuelo;
+    }
+
+    public void setVuelo(Vuelo vuelo) {
+        this.vuelo = vuelo;
     }
 
     public int getNumeroAsiento() {
@@ -52,14 +64,17 @@ public class Asiento {
     public void setP(Pasajero p) {
         this.p = p;
     }
-    
-    public void reservar(){}
-    
-    public void comprar(){}
-    
-    public void desbloquear(){}
-    
-    public boolean mostrar_disponivilidad(boolean b){
+
+    public void reservar() {
+    }
+
+    public void comprar() {
+    }
+
+    public void desbloquear() {
+    }
+
+    public boolean mostrar_disponivilidad(boolean b) {
         return b;
     }
 }

@@ -10,16 +10,28 @@ package UML;
  * @author steel
  */
 public class Pasajero {
-    private String cedula,nombre,apellido,sexo;
+
+    private String cedula, nombre, apellido, sexo;
     private int edad;
     private Asiento a;
+    private Vuelo vuelo;
 
-    public Pasajero(String cedula, String nombre, String apellido, String sexo, int edad) {
+    public Pasajero(String cedula, String nombre, String apellido, String sexo, int edad, Asiento a, Vuelo vuelo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.sexo = sexo;
         this.edad = edad;
+        this.a = a;
+        this.vuelo = vuelo;
+    }
+
+    public Vuelo getVuelo() {
+        return vuelo;
+    }
+
+    public void setVuelo(Vuelo vuelo) {
+        this.vuelo = vuelo;
     }
 
     public String getCedula() {
@@ -69,14 +81,17 @@ public class Pasajero {
     public void setA(Asiento a) {
         this.a = a;
     }
-    
-    public void agregar_nuevo(){}
-    
-    public void modificar(){}
-    
-    public void asignar_nuevo(){}
-    
-    public Pasajero buscar(Pasajero p){
+
+    public void agregar_nuevo() {
+    }
+
+    public void modificar() {
+    }
+
+    public void asignar_nuevo() {
+    }
+
+    public Pasajero buscar(Pasajero p) {
         return p;
     }
 }
