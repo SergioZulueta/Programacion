@@ -24,4 +24,7 @@ public class Ejercicio2 {
         Ventana v = new Ventana();
         v.setVisible(true);
     }    
+    
+
+    
 }
