@@ -5,18 +5,40 @@
  */
 package ejercicio1;
 
+import UML.*;
+import Vistas.*;
+
 /**
  *
  * @author hp_pc
  */
 public class Ejercicio1 {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static Sesion s;
+    public static VPrincipal vp;
+    public static VSecundaria vs;
+    public static Usuario usuario;
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        inicializarVentanas();
+
+    }
+
+    public static void inicializarVentanas() {
+        s = new Sesion();
+        s.setVisible(true);
+
+        vp = new VPrincipal();
+        vs = new VSecundaria();
+    }
+
+    public static void cerrarPrograma() {
+        System.exit(0);
+    }
+
+    public static void crearUsuario() {
+        usuario = new Usuario("admin", "admin");
         
     }
-    
+
 }

@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import ejercicio1.Ejercicio1;
+
 /**
  *
  * @author hp_pc
@@ -16,6 +18,7 @@ public class VPrincipal extends javax.swing.JFrame {
      */
     public VPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,14 +34,14 @@ public class VPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jmAlta = new javax.swing.JMenuItem();
+        jmModificacion = new javax.swing.JMenuItem();
+        jmBaja = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,14 +52,14 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Personas");
 
-        jMenuItem2.setText("Alta");
-        jMenu1.add(jMenuItem2);
+        jmAlta.setText("Alta");
+        jMenu1.add(jmAlta);
 
-        jMenuItem1.setText("Modificacion");
-        jMenu1.add(jMenuItem1);
+        jmModificacion.setText("Modificacion");
+        jMenu1.add(jmModificacion);
 
-        jMenuItem3.setText("Baja");
-        jMenu1.add(jMenuItem3);
+        jmBaja.setText("Baja");
+        jMenu1.add(jmBaja);
 
         jMenu3.setText("Listado");
 
@@ -74,8 +77,13 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Salir");
-        jMenuBar1.add(jMenu2);
+        jmSalir.setText("Salir");
+        jmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSalirActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jmSalir);
 
         setJMenuBar(jMenuBar1);
 
@@ -106,9 +114,13 @@ public class VPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
+        this.dispose();
+        s.setVisible(true);
+    }//GEN-LAST:event_jmSalirActionPerformed
+
+    public static Sesion s = new Sesion();
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -145,14 +157,14 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JMenuItem jmAlta;
+    private javax.swing.JMenuItem jmBaja;
+    private javax.swing.JMenuItem jmModificacion;
+    private javax.swing.JMenu jmSalir;
     // End of variables declaration//GEN-END:variables
 }
