@@ -1,0 +1,20 @@
+2019-02-25 12:41:31 3908 [Note] Plugin 'FEDERATED' is disabled.
+2019-02-25 12:41:31 3908 [Note] InnoDB: The InnoDB memory heap is disabled
+2019-02-25 12:41:31 3908 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2019-02-25 12:41:31 3908 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2019-02-25 12:41:31 3908 [Note] InnoDB: Not using CPU crc32 instructions
+2019-02-25 12:41:31 3908 [Note] InnoDB: Initializing buffer pool, size = 128.0M
+2019-02-25 12:41:31 3908 [Note] InnoDB: Completed initialization of buffer pool
+2019-02-25 12:41:31 3908 [Note] InnoDB: Setting log file C:\Users\hp_pc\Desktop\Sergio Zulueta\PROGRAMACION\Programacion\USBWebserver v8.6\mysql\data\ib_logfile101 size to 5 MB
+2019-02-25 12:41:32 3908 [Note] InnoDB: Setting log file C:\Users\hp_pc\Desktop\Sergio Zulueta\PROGRAMACION\Programacion\USBWebserver v8.6\mysql\data\ib_logfile1 size to 5 MB
+2019-02-25 12:41:32 3908 [Note] InnoDB: Renaming log file C:\Users\hp_pc\Desktop\Sergio Zulueta\PROGRAMACION\Programacion\USBWebserver v8.6\mysql\data\ib_logfile101 to C:\Users\hp_pc\Desktop\Sergio Zulueta\PROGRAMACION\Programacion\USBWebserver v8.6\mysql\data\ib_logfile0
+2019-02-25 12:41:32 3908 [Warning] InnoDB: New log files created, LSN=1626134
+2019-02-25 12:41:32 3908 [Note] InnoDB: Highest supported file format is Barracuda.
+2019-02-25 12:41:33 3908 [Note] InnoDB: 128 rollback segment(s) are active.
+2019-02-25 12:41:33 3908 [Note] InnoDB: Waiting for purge to start
+2019-02-25 12:41:33 3908 [Note] InnoDB: 5.6.13 started; log sequence number 1626636
+2019-02-25 12:41:33 3908 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: 4ce319aa-38f2-11e9-9632-6431507f00ac.
+2019-02-25 12:41:33 3908 [Note] Server hostname (bind-address): '*'; port: 3307
+2019-02-25 12:41:33 3908 [Note] IPv6 is available.
+2019-02-25 12:41:33 3908 [Note]   - '::' resolves to '::';
+2019-02-25 12:41:33 3908 [Note] Server socket created on IP: '::'.
