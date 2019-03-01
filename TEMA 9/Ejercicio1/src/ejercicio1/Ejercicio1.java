@@ -16,7 +16,7 @@ import java.sql.Connection;
 public class Ejercicio1 {
 
     private static Connection con;
-    private static PersonaDAO oPersonaDAO;
+    private static PersonaDAO oPersonaDAO;                                      
     private static BaseDatos bd;
     private static VPrincipal vp;
 
