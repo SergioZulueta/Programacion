@@ -32,7 +32,7 @@ public class AcontecimientoBD {
     public int obtenerCodigo() throws Exception {
         Conexion con = new Conexion();
         Statement sentencia = con.getConnection().createStatement();
-        ResultSet res = sentencia.executeQuery("select max(id_a)as id_a from Acontecimiento");
+        ResultSet res = sentencia.executeQuery("select max(id_a)as id_a from proyecto");
         if (res.next()) {
             codigo = res.getInt("id_a") + 1;
         } else {
@@ -46,7 +46,7 @@ public class AcontecimientoBD {
 
         Statement sentencia = con.getConnection().createStatement();
 
-        sentencia.executeUpdate("INSERT INTO Acontecimiento VALUES('" + a.getCod() + "','" + a.getNombre() + "','"
+        sentencia.executeUpdate("INSERT INTO proyecto VALUES('" + a.getNombre() + "','"
                 + a.getLugar() + "','" + a.getFecha() + "','" + a.getHora_i() + "','" + a.getHora_f() + "','" + a.getAforo() + "')");
 
         sentencia.close();
@@ -58,7 +58,7 @@ public class AcontecimientoBD {
         Conexion con = new Conexion();
         Statement sentencia = con.getConnection().createStatement();
 
-        sentencia.executeUpdate("delete from Acontecimiento where id_a=" + cod);
+        sentencia.executeUpdate("delete from proyecto where id_a=" + cod);
 
         sentencia.close();
         con.desconectar();
@@ -68,7 +68,7 @@ public class AcontecimientoBD {
         ArrayList<acontecimiento> listaPersonas = new ArrayList();
         Conexion con = new Conexion();
 
-        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Acontecimiento WHERE UPPER(nombre)=?");
+        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM proyecto WHERE UPPER(nombre)=?");
         sentencia.setString(1, nombre);
         ResultSet res = sentencia.executeQuery();
 
@@ -94,7 +94,7 @@ public class AcontecimientoBD {
         Conexion con = new Conexion();
 
         Statement sentencia = con.getConnection().createStatement();
-        ResultSet res = sentencia.executeQuery("SELECT * FROM Acontecimiento");
+        ResultSet res = sentencia.executeQuery("SELECT * FROM proyecto");
 
         while (res.next()) {
             acontecimiento a = new acontecimiento();
@@ -118,7 +118,7 @@ public class AcontecimientoBD {
         Conexion con = new Conexion();
 
         Statement sentencia = con.getConnection().createStatement();
-        ResultSet res = sentencia.executeQuery("SELECT id_a FROM Acontecimiento");
+        ResultSet res = sentencia.executeQuery("SELECT id_a FROM proyecto");
 
         while (res.next()) {
             cadena += res.getInt("id_a") + ", ";
@@ -133,7 +133,7 @@ public class AcontecimientoBD {
         acontecimiento a = null;
         Conexion con = new Conexion();
 
-        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM Acontecimiento WHERE id_a=?");
+        PreparedStatement sentencia = con.getConnection().prepareStatement("SELECT * FROM proyecto WHERE id_a=?");
         sentencia.setString(1, Integer.toString(cod));
         ResultSet res = sentencia.executeQuery();
 
@@ -155,7 +155,7 @@ public class AcontecimientoBD {
 
     public void modificar(acontecimiento ac) throws Exception {
         Conexion con = new Conexion();
-        PreparedStatement sentencia = con.getConnection().prepareStatement("update Acontecimiento set nombre=?,lugar=?,fecha=?,hora_inicio=?,hora_fin=?,aforo=? where id_a=?");
+        PreparedStatement sentencia = con.getConnection().prepareStatement("update proyecto set nombre=?,lugar=?,fecha=?,hora_inicio=?,hora_fin=?,aforo=? where id_a=?");
         sentencia.setString(1, ac.getNombre());
         sentencia.setString(2, ac.getLugar());
         sentencia.setDate(3, ac.getFecha());
