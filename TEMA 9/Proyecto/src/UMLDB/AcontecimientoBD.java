@@ -46,7 +46,7 @@ public class AcontecimientoBD {
 
         Statement sentencia = con.getConnection().createStatement();
 
-        sentencia.executeUpdate("INSERT INTO proyecto VALUES('" + a.getNombre() + "','"
+        sentencia.executeUpdate("INSERT INTO proyecto VALUES( '" + a.getNombre() + "','"
                 + a.getLugar() + "','" + a.getFecha() + "','" + a.getHora_i() + "','" + a.getHora_f() + "','" + a.getAforo() + "')");
 
         sentencia.close();

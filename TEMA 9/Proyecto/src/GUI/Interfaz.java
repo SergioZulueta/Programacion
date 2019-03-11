@@ -96,6 +96,12 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel7.setText("Aforo");
 
+        tfFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfFechaActionPerformed(evt);
+            }
+        });
+
         tfHorai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfHoraiActionPerformed(evt);
@@ -246,6 +252,10 @@ public class Interfaz extends javax.swing.JFrame {
     private void tfHoraiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHoraiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfHoraiActionPerformed
+
+    private void tfFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfFechaActionPerformed
 
     public boolean validar(){
         boolean ret=true;
