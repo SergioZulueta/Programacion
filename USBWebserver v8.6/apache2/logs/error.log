@@ -1,5 +1,5 @@
-[Mon Mar 11 12:44:20.865458 2019] [mpm_winnt:notice] [pid 5304:tid 848] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
-[Mon Mar 11 12:44:20.866458 2019] [mpm_winnt:notice] [pid 5304:tid 848] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
-[Mon Mar 11 12:44:20.866458 2019] [core:notice] [pid 5304:tid 848] AH00094: Command line: 'C:\\Users\\hp_pc\\Desktop\\Sergio Zulueta\\PROGRAMACION\\Programacion\\USBWebserver v8.6/apache2/bin/httpd_usbwv8.exe -d C:/Users/hp_pc/Desktop/Sergio Zulueta/PROGRAMACION/Programacion/USBWebserver v8.6/apache2'
-[Mon Mar 11 12:44:20.901455 2019] [mpm_winnt:notice] [pid 5304:tid 848] AH00418: Parent: Created child process 1748
-[Mon Mar 11 12:44:22.367371 2019] [mpm_winnt:notice] [pid 1748:tid 592] AH00354: Child: Starting 64 worker threads.
+[Tue Mar 12 09:10:20.436222 2019] [mpm_winnt:notice] [pid 5440:tid 812] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Tue Mar 12 09:10:20.436222 2019] [mpm_winnt:notice] [pid 5440:tid 812] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Tue Mar 12 09:10:20.436222 2019] [core:notice] [pid 5440:tid 812] AH00094: Command line: 'C:\\Users\\hp_pc\\Desktop\\Sergio Zulueta\\PROGRAMACION\\Programacion\\USBWebserver v8.6/apache2/bin/httpd_usbwv8.exe -d C:/Users/hp_pc/Desktop/Sergio Zulueta/PROGRAMACION/Programacion/USBWebserver v8.6/apache2'
+[Tue Mar 12 09:10:20.514353 2019] [mpm_winnt:notice] [pid 5440:tid 812] AH00418: Parent: Created child process 6548
+[Tue Mar 12 09:10:21.576825 2019] [mpm_winnt:notice] [pid 6548:tid 736] AH00354: Child: Starting 64 worker threads.

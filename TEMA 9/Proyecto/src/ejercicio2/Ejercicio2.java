@@ -31,6 +31,7 @@ public class Ejercicio2 {
 
     public static void main(String[] args) {
 
+        
         try {
             con = new Conexion();
             con.getConnection();
@@ -38,7 +39,7 @@ public class Ejercicio2 {
             vp = new Menu();
             vp.setVisible(true);
 
-            oProyectoDAO = new AcontecimientoBD(con.getConnection());
+            miAcontecimiento = new AcontecimientoBD(con.getConnection());
 
         } catch (Exception e) {
             System.out.println("Error en el main");
@@ -51,22 +52,22 @@ public class Ejercicio2 {
         i = new Interfaz(codigo, a);
     }
 
-    public static void nuevoAcontecimiento(int cod, String nombre, String lugar, String fecha, String horaI, String horaF, int aforo, boolean modif) throws Exception {
+    public static void nuevoAcontecimiento(String nombre, String lugar, String fecha, String horaI, String horaF, int aforo, boolean modif) throws Exception {
         SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date f = fmt.parse(fecha);
         java.sql.Date fech = new java.sql.Date(f.getTime());
 
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
         long ms1 = sdf.parse(horaI).getTime();
-        Time horainit = new Time(ms1);
+        java.sql.Time horainit = new Time(ms1);
 
         long ms2 = sdf.parse(horaF).getTime();
-        Time horafin = new Time(ms2);
+        java.sql.Time horafin = new Time(ms2);
 
         if (horaF.isEmpty()) {
             horafin = null;
         }
-        acontecimiento ac = new acontecimiento(cod, nombre, lugar, fech, horainit, horafin, aforo);
+        acontecimiento ac = new acontecimiento(nombre, lugar, fech, horainit, horafin, aforo);
         if (!modif) {
             miAcontecimiento.nuevoAcontecimiento(ac);
         } else {

@@ -42,16 +42,33 @@ public class AcontecimientoBD {
     }
 
     public void nuevoAcontecimiento(acontecimiento a) throws Exception {
-        Conexion con = new Conexion();
+        /*Conexion con = new Conexion();
 
         Statement sentencia = con.getConnection().createStatement();
 
-        sentencia.executeUpdate("INSERT INTO proyecto VALUES( '" + a.getNombre() + "','"
-                + a.getLugar() + "','" + a.getFecha() + "','" + a.getHora_i() + "','" + a.getHora_f() + "','" + a.getAforo() + "')");
+        sentencia.executeUpdate("INSERT INTO proyecto VALUES( '" + a.getNombre() 
+                + "','" + a.getLugar() 
+                + "','" + a.getFecha() 
+                + "','" + a.getHora_i() 
+                + "','" + a.getHora_f() 
+                + "','" + a.getAforo() + "')");*/
 
-        sentencia.close();
+        String plantilla = "INSERT INTO proyecto VALUES (?,?,?,?,?,?);";
+        PreparedStatement ps = con.prepareStatement(plantilla);
+        ps.setString(1, a.getNombre());
+        ps.setString(2, a.getLugar());
+        ps.setDate(3, a.getFecha());
+        ps.setTime(4, a.getHora_i());
+        ps.setTime(5, a.getHora_f());
+        ps.setInt(6, a.getAforo());
+        
 
-        con.desconectar();
+        int n = ps.executeUpdate();
+        ps.close();
+        if (n != 1) {
+            throw new Exception("El número de filas actualizadas no es uno");
+        }
+
     }
 
     public void eliminar(int cod) throws Exception {

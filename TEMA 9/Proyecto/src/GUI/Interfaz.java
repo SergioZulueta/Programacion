@@ -231,23 +231,18 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{                           
             if(validar()&&!modifi){                    
-                Ejercicio2.nuevoAcontecimiento(cod,tfNombre.getText(),tfLugar.getText(),tfFecha.getText(),tfHorai.getText(),tfHoraf.getText(),Integer.parseInt(tfAforo.getText()),false);
+                Ejercicio2.nuevoAcontecimiento(tfNombre.getText(),tfLugar.getText(),tfFecha.getText(),tfHorai.getText(),tfHoraf.getText(),Integer.parseInt(tfAforo.getText()),false);
                 Ejercicio2.guardado();
             }
             else
                 if(validar()&&modifi){
-                    Ejercicio2.nuevoAcontecimiento(Integer.parseInt(tfCodigo.getText()),tfNombre.getText(),tfLugar.getText(),tfFecha.getText(),tfHorai.getText(),tfHoraf.getText(),Integer.parseInt(tfAforo.getText()),true);
+                    Ejercicio2.nuevoAcontecimiento(tfNombre.getText(),tfLugar.getText(),tfFecha.getText(),tfHorai.getText(),tfHoraf.getText(),Integer.parseInt(tfAforo.getText()),true);
                     Ejercicio2.modif(this);
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Ha ocurrido un error"+e.getCause());
         }
     }//GEN-LAST:event_bAActionPerformed
-
-    private void tfCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodigoActionPerformed
-        // TODO add your handling code here:
-        llenarModif();
-    }//GEN-LAST:event_tfCodigoActionPerformed
 
     private void tfHoraiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHoraiActionPerformed
         // TODO add your handling code here:
@@ -256,6 +251,11 @@ public class Interfaz extends javax.swing.JFrame {
     private void tfFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfFechaActionPerformed
+
+    private void tfCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodigoActionPerformed
+        // TODO add your handling code here:
+        llenarModif();
+    }//GEN-LAST:event_tfCodigoActionPerformed
 
     public boolean validar(){
         boolean ret=true;

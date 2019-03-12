@@ -26,8 +26,17 @@ public class acontecimiento {
     public acontecimiento() {
     }
 
+    public acontecimiento(String nombre, String lugar, Date fecha, Time hora_i, Time hora_f, int aforo) {
+        this.nombre = nombre;
+        this.lugar = lugar;
+        this.fecha = fecha;
+        this.hora_i = hora_i;
+        this.hora_f = hora_f;
+        this.aforo = aforo;
+    }
+
     public acontecimiento(int cod, String nombre, String lugar, Date fecha, Time hora_i, Time hora_f, int aforo) {
-        
+
         this.cod = cod;
         this.nombre = nombre;
         this.lugar = lugar;
