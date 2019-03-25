@@ -76,7 +76,7 @@ public class AcontecimientoBD {
         Statement sentencia = con.getConnection().createStatement();
 
         sentencia.executeUpdate("delete from proyecto where id_a=" + cod);
-
+        
         sentencia.close();
         con.desconectar();
     }
