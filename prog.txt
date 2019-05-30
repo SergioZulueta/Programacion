@@ -1,0 +1,131 @@
+    private static ResultSet resultado;
+    private static Bdr bdr;
+
+
+    public DueñoBD() {
+        bdr = new Bdr();
+    }    
+
+public void insertarDueño(Dueño d) throws Exception, SQLException {
+        bdr.conectar();
+        String plantilla = "INSERT INTO DUEÑO(NOMBRE,APELLIDO,TELEFONO) VALUES (?,?,?)";
+        PreparedStatement sentenciaPre = bdr.getCon().prepareStatement(plantilla);
+        sentenciaPre.setString(1, d.getNombre());
+        sentenciaPre.setString(2, d.getApellido());
+        sentenciaPre.setString(3, d.getTelefono());
+        sentenciaPre.executeUpdate();
+        bdr.cerrarCon();
+        }
+
+    public Dueño crearObjeto() throws Exception, SQLException {
+        Dueño d = new Dueño();
+        d.setCod_dueño(resultado.getInt("COD_DUEÑO"));
+        d.setNombre(resultado.getString("NOMBRE"));
+        d.setApellido(resultado.getString("APELLIDO"));
+        d.setTelefono(resultado.getString("TELEFONO"));
+        return d;
+    }
+
+    public Dueño crearObjetoConListaEquipos() throws Exception, SQLException {
+        Dueño d = new Dueño();
+        d.setNombre(resultado.getString("NOMBRE"));
+        d.setApellido(resultado.getString("APELLIDO"));
+        d.setTelefono(resultado.getString("TELEFONO"));
+        EquipoBD eBD = new EquipoBD();
+        ArrayList<Equipo> listaEquipos = eBD.consultaEquipos();
+        d.setLista_equipos(listaEquipos);
+        return d;
+    }
+
+    public Dueño consultarDueñoCodigo(int cod_dueño) throws Exception, SQLException {
+        bdr.conectar();
+        String plantilla = "SELECT COD_DUEÑO,NOMBRE,APELLIDO,TELEFONO FROM DUEÑO WHERE COD_DUEÑO= ?";
+        PreparedStatement sentenciaPre = bdr.getCon().prepareStatement(plantilla);
+        sentenciaPre.setInt(1, cod_dueño);
+        resultado = sentenciaPre.executeQuery();
+        Dueño d;
+        if (resultado.next()) {
+            d = crearObjeto();
+        } else {
+            d = null;
+        }
+        bdr.cerrarCon();
+        return d;
+    }
+
+    public ArrayList<Dueño> consultaTodosDueños() throws Exception, SQLException {
+        ArrayList<Dueño> listaDueños = new ArrayList();
+        bdr.conectar();
+        Statement sentencia = bdr.getCon().createStatement();
+        resultado = sentencia.executeQuery("SELECT COD_DUEÑO,NOMBRE,APELLIDO,TELEFONO FROM DUEÑO");
+        while (resultado.next()) {
+            listaDueños.add(crearObjeto());
+        }
+        bdr.cerrarCon();
+        return listaDueños;
+    }
+
+    public void borrarDueño(int cod_dueño) throws Exception, SQLException {
+        bdr.conectar();
+        String plantilla = "DELETE FROM DUEÑO WHERE COD_DUEÑO= ?";
+        PreparedStatement sentenciaPre = bdr.getCon().prepareStatement(plantilla);
+        sentenciaPre.setInt(1, cod_dueño);
+        sentenciaPre.executeUpdate();
+        bdr.cerrarCon();
+    }
+
+    public void modificarDueño(Dueño d) throws Exception, SQLException {
+        bdr.conectar();
+        String plantilla = "UPDATE DUEÑO SET NOMBRE=?, APELLIDO=?, TELEFONO=? WHERE COD_DUEÑO=? ";
+        PreparedStatement sentenciaPre = bdr.getCon().prepareStatement(plantilla);
+        sentenciaPre.setString(1, d.getNombre());
+        sentenciaPre.setString(2, d.getApellido());
+        sentenciaPre.setString(3, d.getTelefono());
+        sentenciaPre.setInt(4, d.getCod_dueño());
+        sentenciaPre.executeUpdate();
+        bdr.cerrarCon();
+    }
+
+
+    public static void altaDueño(String nombre, String apellido, String telefono) throws Exception, SQLException {
+        d = new Dueño();
+        d.setNombre(nombre);
+        d.setApellido(apellido);
+        d.setTelefono(telefono);
+        dBD.insertarDueño(d);
+    }
+
+
+    public static void bajaDueño(int codDueño) throws Exception, SQLException {
+        dBD.borrarDueño(codDueño);
+    }
+
+    public static void modificarDueño(int codigoDueño, String nombre, String apellido, String telefono) throws Exception, SQLException {
+        d = new Dueño();
+        d.setCod_dueño(codigoDueño);
+        d.setNombre(nombre);
+        d.setApellido(apellido);
+        d.setTelefono(telefono);
+        dBD.modificarDueño(d);
+    }
+
+    public static Dueño consultarDueño(int codDueño) throws Exception, SQLException {
+        d = dBD.consultarDueñoCodigo(codDueño);
+        return d;
+    }
+
+
+    public static String crearListaDueños() throws Exception, SQLException {
+        listaDueños = dBD.consultaTodosDueños();
+        String stringDueños = "";
+        for (int x = 0; x < listaDueños.size(); x++) {
+            String stringEquipos = "";
+            listaEquipos = eBD.consultaEquiposCodDueño(listaDueños.get(x).getCod_dueño());
+            for (int y = 0; y < listaEquipos.size(); y++) {
+                stringEquipos += listaEquipos.get(y).getNombre() + ", ";
+            }
+            stringDueños += "codigo: " + listaDueños.get(x).getCod_dueño() + " nombre: " + listaDueños.get(x).getNombre() + " apellido: " + listaDueños.get(x).getApellido() + " telefono: " + listaDueños.get(x).getTelefono() + " equipos: " + stringEquipos + "\n\n";
+        }
+        return stringDueños;
+    }
+
