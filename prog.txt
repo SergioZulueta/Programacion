@@ -1,14 +1,40 @@
-    private static ResultSet resultado;
+       private static ResultSet resultado;
     private static Bdr bdr;
 
+private Connection con;
 
-    public DueBD() {
+    public void conectar() {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String url = "jdbc:oracle:thin:@SrvOracle:1521:orcl";
+            con = DriverManager.getConnection(url, "eqdaw02", "eqdaw02");
+        } catch (ClassNotFoundException | SQLException e) {
+            String mensaje = "Problemas con la base de datos relacional";
+            JEMS.errorBdr(mensaje);
+            System.exit(0);
+        }
+    }
+
+    public Connection getCon() {
+        return con;
+    }
+
+    public void cerrarCon() throws Exception {
+        con.close();
+    }
+
+    public DueﾃｱoBD() {
         bdr = new Bdr();
     }    
 
-public void insertarDue(Due d) throws Exception, SQLException {
+        dueﾃｱos = JEMS.getListaDueﾃｱos();
+        for (int i = 0; i < dueﾃｱos.size(); i++) {
+            cbDueﾃｱo.insertItemAt(dueﾃｱos.get(i).getNombre(), i);
+        }
+
+    public void insertarDueﾃｱo(Dueﾃｱo d) throws Exception, SQLException {
         bdr.conectar();
-        String plantilla = "INSERT INTO DUEﾑO(NOMBRE,APELLIDO,TELEFONO) VALUES (?,?,?)";
+        String plantilla = "INSERT INTO DUEﾃ前(NOMBRE,APELLIDO,TELEFONO) VALUES (?,?,?)";
         PreparedStatement sentenciaPre = bdr.getCon().prepareStatement(plantilla);
         sentenciaPre.setString(1, d.getNombre());
         sentenciaPre.setString(2, d.getApellido());
@@ -17,17 +43,17 @@ public void insertarDue(Due d) throws Exception, SQLException {
         bdr.cerrarCon();
         }
 
-    public Due crearObjeto() throws Exception, SQLException {
-        Due d = new Due();
-        d.setCod_due(resultado.getInt("COD_DUEﾑO"));
+    public Dueﾃｱo crearObjeto() throws Exception, SQLException {
+        Dueﾃｱo d = new Dueﾃｱo();
+        d.setCod_dueﾃｱo(resultado.getInt("COD_DUEﾃ前"));
         d.setNombre(resultado.getString("NOMBRE"));
         d.setApellido(resultado.getString("APELLIDO"));
         d.setTelefono(resultado.getString("TELEFONO"));
         return d;
     }
 
-    public Due crearObjetoConListaEquipos() throws Exception, SQLException {
-        Due d = new Due();
+    public Dueﾃｱo crearObjetoConListaEquipos() throws Exception, SQLException {
+        Dueﾃｱo d = new Dueﾃｱo();
         d.setNombre(resultado.getString("NOMBRE"));
         d.setApellido(resultado.getString("APELLIDO"));
         d.setTelefono(resultado.getString("TELEFONO"));
@@ -37,13 +63,13 @@ public void insertarDue(Due d) throws Exception, SQLException {
         return d;
     }
 
-    public Due consultarDueCodigo(int cod_due) throws Exception, SQLException {
+    public Dueﾃｱo consultarDueﾃｱoCodigo(int cod_dueﾃｱo) throws Exception, SQLException {
         bdr.conectar();
-        String plantilla = "SELECT COD_DUEﾑO,NOMBRE,APELLIDO,TELEFONO FROM DUEﾑO WHERE COD_DUEﾑO= ?";
+        String plantilla = "SELECT COD_DUEﾃ前,NOMBRE,APELLIDO,TELEFONO FROM DUEﾃ前 WHERE COD_DUEﾃ前= ?";
         PreparedStatement sentenciaPre = bdr.getCon().prepareStatement(plantilla);
-        sentenciaPre.setInt(1, cod_due);
+        sentenciaPre.setInt(1, cod_dueﾃｱo);
         resultado = sentenciaPre.executeQuery();
-        Due d;
+        Dueﾃｱo d;
         if (resultado.next()) {
             d = crearObjeto();
         } else {
@@ -53,79 +79,79 @@ public void insertarDue(Due d) throws Exception, SQLException {
         return d;
     }
 
-    public ArrayList<Due> consultaTodosDues() throws Exception, SQLException {
-        ArrayList<Due> listaDues = new ArrayList();
+    public ArrayList<Dueﾃｱo> consultaTodosDueﾃｱos() throws Exception, SQLException {
+        ArrayList<Dueﾃｱo> listaDueﾃｱos = new ArrayList();
         bdr.conectar();
         Statement sentencia = bdr.getCon().createStatement();
-        resultado = sentencia.executeQuery("SELECT COD_DUEﾑO,NOMBRE,APELLIDO,TELEFONO FROM DUEﾑO");
+        resultado = sentencia.executeQuery("SELECT COD_DUEﾃ前,NOMBRE,APELLIDO,TELEFONO FROM DUEﾃ前");
         while (resultado.next()) {
-            listaDues.add(crearObjeto());
+            listaDueﾃｱos.add(crearObjeto());
         }
         bdr.cerrarCon();
-        return listaDues;
+        return listaDueﾃｱos;
     }
 
-    public void borrarDue(int cod_due) throws Exception, SQLException {
+    public void borrarDueﾃｱo(int cod_dueﾃｱo) throws Exception, SQLException {
         bdr.conectar();
-        String plantilla = "DELETE FROM DUEﾑO WHERE COD_DUEﾑO= ?";
+        String plantilla = "DELETE FROM DUEﾃ前 WHERE COD_DUEﾃ前= ?";
         PreparedStatement sentenciaPre = bdr.getCon().prepareStatement(plantilla);
-        sentenciaPre.setInt(1, cod_due);
+        sentenciaPre.setInt(1, cod_dueﾃｱo);
         sentenciaPre.executeUpdate();
         bdr.cerrarCon();
     }
 
-    public void modificarDue(Due d) throws Exception, SQLException {
+    public void modificarDueﾃｱo(Dueﾃｱo d) throws Exception, SQLException {
         bdr.conectar();
-        String plantilla = "UPDATE DUEﾑO SET NOMBRE=?, APELLIDO=?, TELEFONO=? WHERE COD_DUEﾑO=? ";
+        String plantilla = "UPDATE DUEﾃ前 SET NOMBRE=?, APELLIDO=?, TELEFONO=? WHERE COD_DUEﾃ前=? ";
         PreparedStatement sentenciaPre = bdr.getCon().prepareStatement(plantilla);
         sentenciaPre.setString(1, d.getNombre());
         sentenciaPre.setString(2, d.getApellido());
         sentenciaPre.setString(3, d.getTelefono());
-        sentenciaPre.setInt(4, d.getCod_due());
+        sentenciaPre.setInt(4, d.getCod_dueﾃｱo());
         sentenciaPre.executeUpdate();
         bdr.cerrarCon();
     }
 
 
-    public static void altaDue(String nombre, String apellido, String telefono) throws Exception, SQLException {
-        d = new Due();
+    public static void altaDueﾃｱo(String nombre, String apellido, String telefono) throws Exception, SQLException {
+        d = new Dueﾃｱo();
         d.setNombre(nombre);
         d.setApellido(apellido);
         d.setTelefono(telefono);
-        dBD.insertarDue(d);
+        dBD.insertarDueﾃｱo(d);
     }
 
 
-    public static void bajaDue(int codDue) throws Exception, SQLException {
-        dBD.borrarDue(codDue);
+    public static void bajaDueﾃｱo(int codDueﾃｱo) throws Exception, SQLException {
+        dBD.borrarDueﾃｱo(codDueﾃｱo);
     }
 
-    public static void modificarDue(int codigoDue, String nombre, String apellido, String telefono) throws Exception, SQLException {
-        d = new Due();
-        d.setCod_due(codigoDue);
+    public static void modificarDueﾃｱo(int codigoDueﾃｱo, String nombre, String apellido, String telefono) throws Exception, SQLException {
+        d = new Dueﾃｱo();
+        d.setCod_dueﾃｱo(codigoDueﾃｱo);
         d.setNombre(nombre);
         d.setApellido(apellido);
         d.setTelefono(telefono);
-        dBD.modificarDue(d);
+        dBD.modificarDueﾃｱo(d);
     }
 
-    public static Due consultarDue(int codDue) throws Exception, SQLException {
-        d = dBD.consultarDueCodigo(codDue);
+    public static Dueﾃｱo consultarDueﾃｱo(int codDueﾃｱo) throws Exception, SQLException {
+        d = dBD.consultarDueﾃｱoCodigo(codDueﾃｱo);
         return d;
     }
 
 
-    public static String crearListaDues() throws Exception, SQLException {
-        listaDues = dBD.consultaTodosDues();
-        String stringDues = "";
-        for (int x = 0; x < listaDues.size(); x++) {
+    public static String crearListaDueﾃｱos() throws Exception, SQLException {
+        listaDueﾃｱos = dBD.consultaTodosDueﾃｱos();
+        String stringDueﾃｱos = "";
+        for (int x = 0; x < listaDueﾃｱos.size(); x++) {
             String stringEquipos = "";
-            listaEquipos = eBD.consultaEquiposCodDue(listaDues.get(x).getCod_due());
+            listaEquipos = eBD.consultaEquiposCodDueﾃｱo(listaDueﾃｱos.get(x).getCod_dueﾃｱo());
             for (int y = 0; y < listaEquipos.size(); y++) {
                 stringEquipos += listaEquipos.get(y).getNombre() + ", ";
             }
-            stringDues += "codigo: " + listaDues.get(x).getCod_due() + " nombre: " + listaDues.get(x).getNombre() + " apellido: " + listaDues.get(x).getApellido() + " telefono: " + listaDues.get(x).getTelefono() + " equipos: " + stringEquipos + "\n\n";
+            stringDueﾃｱos += "codigo: " + listaDueﾃｱos.get(x).getCod_dueﾃｱo() + " nombre: " + listaDueﾃｱos.get(x).getNombre() + " apellido: " + listaDueﾃｱos.get(x).getApellido() + " telefono: " + listaDueﾃｱos.get(x).getTelefono() + " equipos: " + stringEquipos + "\n\n";
         }
-        return stringDues;
+        return stringDueﾃｱos;
     }
 
