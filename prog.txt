@@ -154,4 +154,31 @@ private Connection con;
         }
         return stringDueños;
     }
+    
+    
+    case "modificar":
+                        JEMS.modificarDueño(Integer.parseInt(tfCodigoDueño.getText()), tfNombre.getText(), tfApellido.getText(),                          tfTelefono.getText());
+                        ControladorVistas.abrirVentanaAviso("Dueño modificado con exito!");
+                        break;
+                    case "alta":
+                        JEMS.altaDueño(tfNombre.getText(), tfApellido.getText(), tfTelefono.getText());
+                        ControladorVistas.abrirVentanaAviso("Dueño dado de alta con exito!");
+                        break;
+                    case "baja":
+                        JEMS.bajaDueño(Integer.parseInt(tfCodigoDueño.getText()));
+                        ControladorVistas.abrirVentanaAviso("Dueño dado de baja con exito!");
+                        break;
+    
+        private void validarNombre() throws Exception {
+        if (tfNombre.getText().isEmpty()) {
+            throw new CampoVacio("El nombre del jugador es obligatorio*.");
+        }
+        Pattern pat = Pattern.compile("([A-Z]){1,20}$");
+        Matcher mat = pat.matcher(tfNombre.getText());
+        if (!mat.matches()) {
+            throw new DatoNoValido("El nombre tiene que ser en mayusculas y tener maximo 20 caracteres.");
+        }
+
+    }
+
 
